@@ -9,7 +9,7 @@ export const manifest = setupManifest({
   upstreamRepo: 'https://github.com/qbittorrent/qBittorrent',
   supportSite: 'https://github.com/crissuper20/qbittorrent-startos/issues',
   marketingSite: 'https://github.com/crissuper20/qbittorrent-startos',
-  donationUrl: 'https://donate.start9.com/',
+  donationUrl: null,
   docsUrl: 'https://github.com/crissuper20/qbittorrent-startos/blob/master/README.md',
   description: { short, long },
   volumes: ['main', 'downloads'],
@@ -20,8 +20,7 @@ export const manifest = setupManifest({
     },
   },
   alerts: {
-    install:
-      'qBittorrent WebUI authentication is disabled for the StartOS internal subnet (10.0.3.0/24). All access is proxied through StartOS, but ensure the P2P port (6881) is not inadvertently exposing the WebUI.',
+    install: null,
     update: null,
     uninstall: null,
     restore:
@@ -29,7 +28,5 @@ export const manifest = setupManifest({
     start: null,
     stop: null,
   },
-  // No dependencies - qBittorrent is self-contained.
-  // FileBrowser/Nextcloud can mount our 'downloads' volume from their side.
   dependencies: {},
 })

@@ -11,15 +11,26 @@ const dict = {
   'Web UI': 4,
   'qBittorrent Web Interface': 5,
 
-  // actions
-  'Connection Info': 6,
-  'View connection details for the qBittorrent Web UI': 7,
-  'Authentication is disabled. No login is required.': 8,
-  'Authentication': 9,
+  // actions/getCredentials.ts
+  'Get Credentials': 6,
+  'View login credentials for the qBittorrent Web UI': 7,
+  'Admin Credentials': 8,
+  'Use these credentials to log in to the qBittorrent Web UI.': 9,
+  'Username': 10,
+  'Password': 11,
 
   // interfaces.ts — P2P
-  'BitTorrent P2P': 10,
-  'BitTorrent peer-to-peer port for seeding and leeching': 11,
+  'BitTorrent P2P': 12,
+  'BitTorrent peer-to-peer port for seeding and leeching': 13,
+
+  // actions/setPassword.ts
+  'Set Password': 14,
+  'Change the admin password for the qBittorrent Web UI': 15,
+  'Restart the service for the new password to take effect.': 16,
+  'New Password': 17,
+  'The new admin password': 18,
+  'Password updated. Restart qBittorrent for the change to take effect.': 19,
+  'Password Changed': 20,
 } as const
 
 /**

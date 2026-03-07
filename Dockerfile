@@ -4,11 +4,10 @@ FROM qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
 USER root
 
 # Install dependencies:
-#   bash      – needed by the startup wrapper
-#   curl      – used by StartOS health checks
+#   curl – used by StartOS health checks
 RUN apk add --no-cache \
-    bash \
-    curl
+    curl \
+    openssl
 
 # Set environment variables consumed by the official entrypoint
 ENV PUID=1000

@@ -1,16 +1,17 @@
 import { i18n } from '../i18n'
 import { sdk } from '../sdk'
+import { storeJson } from '../fileModels/store.json'
 
 /**
- * Action: Connection Info
- * Displays connection details for the qBittorrent Web UI.
+ * Action: Get Admin Credentials
+ * Displays the login credentials for the qBittorrent Web UI.
  */
-export const connectionInfo = sdk.Action.withoutInput(
-  'connection-info',
+export const getCredentials = sdk.Action.withoutInput(
+  'get-credentials',
 
   async ({ effects }) => ({
-    name: i18n('Connection Info'),
-    description: i18n('View connection details for the qBittorrent Web UI'),
+    name: i18n('Get Credentials'),
+    description: i18n('View login credentials for the qBittorrent Web UI'),
     warning: null,
     allowedStatuses: 'any' as const,
     group: null,
@@ -18,20 +19,32 @@ export const connectionInfo = sdk.Action.withoutInput(
   }),
 
   async ({ effects }) => {
+    const password =
+      (await storeJson.read((s) => s.password).once()) ?? 'adminadmin'
+
     return {
       version: '1' as const,
-      title: i18n('Connection Info'),
-      message: i18n('Authentication is disabled. No login is required.'),
+      title: i18n('Admin Credentials'),
+      message: i18n('Use these credentials to log in to the qBittorrent Web UI.'),
       result: {
         type: 'group' as const,
         value: [
           {
             type: 'single' as const,
-            name: i18n('Authentication'),
+            name: i18n('Username'),
             description: null,
-            value: 'Disabled — no login required',
+            value: 'admin',
             masked: false,
-            copyable: false,
+            copyable: true,
+            qr: false,
+          },
+          {
+            type: 'single' as const,
+            name: i18n('Password'),
+            description: null,
+            value: password,
+            masked: true,
+            copyable: true,
             qr: false,
           },
         ],

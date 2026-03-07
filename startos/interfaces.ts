@@ -21,7 +21,7 @@ export const setInterfaces = sdk.setupInterfaces(async ({ effects }) => {
   })
   const uiReceipt = await uiMultiOrigin.export([ui])
 
-  // BitTorrent P2P 
+  // BitTorrent P2P
   const p2pMulti = sdk.MultiHost.of(effects, 'p2p-multi')
   const p2pOrigin = await p2pMulti.bindPort(torrentPort, {
     protocol: null,
